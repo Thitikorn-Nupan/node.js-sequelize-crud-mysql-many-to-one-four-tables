@@ -1,19 +1,19 @@
 const log = require('../log/logging').logger
-const bodyParser = require('../service/service-rest-api').bodyParser
+const bodyParser = require('../service/rest-api-service').bodyParser
 
-/* variable for any router */
-const routerProject = require('../service/service-rest-api').express.Router()
-const routerMarketing = require('../service/service-rest-api').express.Router()
-const routerProgrammer = require('../service/service-rest-api').express.Router()
-const routerSale = require('../service/service-rest-api').express.Router()
+/** variable for any router */
+const routerProject = require('../service/rest-api-service').express.Router()
+const routerMarketing = require('../service/rest-api-service').express.Router()
+const routerProgrammer = require('../service/rest-api-service').express.Router()
+const routerSale = require('../service/rest-api-service').express.Router()
 
-/* variable for any crud  */
+/** variable for any crud  */
 const crudMarketing = require('../crud/marketing/crud-marketing') , CrudMarketingObj = new crudMarketing()
 const crudProgrammer = require('../crud/programmer/crud-programmer') , CrudProgrammerObj = new crudProgrammer()
 const crudSale = require('../crud/sale/crud-sale') , CrudSaleObj = new crudSale()
 const crudProject = require('../crud/crud-projects') , CrudProjectObj = new crudProject()
 
-/* set meddler ware*/
+/** set meddler ware */
 routerProject.use(bodyParser.json())
 routerProject.use(bodyParser.urlencoded({extended : true}))
 routerMarketing.use(bodyParser.json())
@@ -24,13 +24,10 @@ routerSale.use(bodyParser.json())
 routerSale.use(bodyParser.urlencoded({extended : true}))
 
 
-const dateObject = new Date(),
-    date = (`0${dateObject.getDate()}`).slice(-2),
-    month = (`0${dateObject.getMonth() + 1}`).slice(-2),
-    year = dateObject.getFullYear()
+const dateObject = new Date(), date = (`0${dateObject.getDate()}`).slice(-2), month = (`0${dateObject.getMonth() + 1}`).slice(-2), year = dateObject.getFullYear()
 //log.info(`${year}-${month}-${date}`)
 
-/* Project */
+/** Project */
 routerProject.get('/reads',async (req , res) => {
     try {
         await CrudProjectObj.reads().then((result) => {
@@ -134,10 +131,8 @@ routerProject.put('/update-header/programmer/(:p_id)/sale/(:s_id)/marketing/(:m_
         throw errors
     }
 })
-/* Project */
-//
-//
-/* Marketings */
+
+/** Marketings */
 routerMarketing.get('/reads',async (req , res) => {
     try {
         await CrudMarketingObj.reads().then((result) => {
@@ -220,10 +215,8 @@ routerMarketing.put('/update/(:m_id)',async (req , res) => {
         throw errors
     }
 })
-/* Marketings */
-//
-//
-/*Programmer */
+
+/** Programmer */
 routerProgrammer.get('/reads',async (req , res) => {
     try {
         await CrudProgrammerObj.reads().then((result) => {
@@ -306,10 +299,8 @@ routerProgrammer.put('/update/(:p_id)',async (req , res) => {
         throw errors
     }
 })
-/* Programmer */
-//
-//
-/* Sale */
+
+/** Sale */
 routerSale.get('/reads',async (req , res) => {
     try {
         await CrudSaleObj.reads().then((result) => {
@@ -342,7 +333,6 @@ routerSale.get('/read/(:s_id)',async (req , res) => {
         throw errors
     }
 })
-
 routerSale.post('/create',async (req , res) => {
     try {
         let {fullname , salary , level} = req.body
@@ -393,8 +383,6 @@ routerSale.put('/update/(:s_id)',async (req , res) => {
         throw errors
     }
 })
-/* Sale */
-
 
 module.exports = {
     routerProject ,

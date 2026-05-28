@@ -1,6 +1,5 @@
-const connect = require('../connect/connect-database').connect
-const sequelize = require('../connect/connect-database').sequelize
-const log = require('../log/logging').logger
+const connect = require('../connect/database-connect').connect
+const sequelize = require('../connect/database-connect').sequelize
 class Projects {
     get projects() {
         return connect.define("projects",
@@ -45,13 +44,11 @@ class Projects {
                 }
             } ,
             {
-                // freeze name table not using *s on name
-                freezeTableName: true ,
-                // don't use createdAt/update
-                timestamps: false
+                freezeTableName: true , // freeze name table not using *s on name
+                timestamps: false  // don't use createdAt/update
             }
         );
-    } // ended programmer method
+    }
 }
 
 module.exports = new Projects().projects

@@ -1,19 +1,18 @@
-const connect = require('../../connect/connect-database').connect
-const sequelize = require('../../connect/connect-database').sequelize
-const log = require('../../log/logging').logger
+const connect = require('../../connect/database-connect').connect
+const sequelize = require('../../connect/database-connect').sequelize
+
 class Marketing {
     get marketing() {
-        log.info("marketing model is used")
         return connect.define("header_marketings",
             {
                 m_id: {
-                    type: sequelize.INTEGER ,
-                    primaryKey: true ,
+                    type: sequelize.INTEGER,
+                    primaryKey: true,
                     autoIncrement: true
-                } ,
+                },
                 fullname: {
                     type: sequelize.STRING
-                } ,
+                },
                 salary: {
                     type: sequelize.DECIMAL
                 }
@@ -21,14 +20,13 @@ class Marketing {
                 level: {
                     type: sequelize.STRING
                 }
-            } ,
+            },
             {
-                // freeze name table not using *s on name
-                freezeTableName: true ,
-                // don't use createdAt/update
-                timestamps: false
+                freezeTableName: true, // freeze name table not using *s on name
+                timestamps: false  // don't use createdAt/update
             }
         );
-    } // ended programmer method
+    }
 }
+
 module.exports = new Marketing().marketing

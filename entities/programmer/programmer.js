@@ -1,9 +1,7 @@
-const connect = require('../../connect/connect-database').connect
-const sequelize = require('../../connect/connect-database').sequelize
-const log = require('../../log/logging').logger
+const connect = require('../../connect/database-connect').connect
+const sequelize = require('../../connect/database-connect').sequelize
 class Programmer {
     get programmer() {
-        log.info("programmer method is working in Programmer.js")
         return connect.define("header_programmers",
             {
                 p_id: {
@@ -23,13 +21,11 @@ class Programmer {
                 }
             } ,
             {
-                // freeze name table not using *s on name
-                freezeTableName: true ,
-                // don't use createdAt/update
-                timestamps: false
+                freezeTableName: true , // freeze name table not using *s on name
+                timestamps: false  // don't use createdAt/update
             }
         );
-    } // ended programmer method
+    }
 }
 
 module.exports = new Programmer().programmer
