@@ -1,8 +1,12 @@
-const log = require('../../log/logging').logger
 const sale = require('../../entities/sale/sale')
 const marketing = require("../../entities/marketing/marketing");
 const programmer = require("../../entities/programmer/programmer");
 const project = require("../../entities/projects");
+const path = require('../../service/rest-api-service').path
+const {createLogger} = require('../../log/logging-v2')
+
+const filename = path.basename(__filename);
+const log = createLogger(filename);
 
 class CrudSale {
     reads = async () => {

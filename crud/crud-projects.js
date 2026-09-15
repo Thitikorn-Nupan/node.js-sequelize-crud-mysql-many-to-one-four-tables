@@ -1,17 +1,19 @@
-const log = require('../log/logging').logger
 const project = require('../entities/projects')
 const programmer = require('../entities/programmer/programmer')
 const sale = require('../entities/sale/sale')
 const marketing = require('../entities/marketing/marketing')
-//  call the hasMany() method from the model that can have many rows of the other model.
+// call the hasMany() method from the model that can have many rows of the other model.
 // The code below will add the p_id (pk) attribute/field to the project field p_id (FK) model./
 // But keep in mind that you can’t query the data of the programmer model from the project model like this
-/*
+const path = require('../service/rest-api-service').path
+const {createLogger} = require('../log/logging-v2')
 
+const filename = path.basename(__filename);
+const log = createLogger(filename);
+/*
     const data = await project.findByPk(1, {
       include: programmer,
     });
-
     // because the programmer model is not associated with the project model in Sequelize
     // notice your table
     // programmer table didn't have foreign key

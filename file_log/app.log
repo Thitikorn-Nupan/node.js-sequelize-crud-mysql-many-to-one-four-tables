@@ -1,0 +1,6 @@
+2026-09-15 12:28:12 info: [database-connect.js] message : connected successfully!!
+2026-09-15 12:29:42 info: [database-connect.js] message : connected successfully!!
+2026-09-15 12:33:25 info: [runner.js] u r in port 3000
+2026-09-15 12:34:15 info: [runner.js] u r in port 3000
+2026-09-15 12:35:42 info: [crud-programmer.js] reads method async of CrudProgrammer is used
+2026-09-15 12:36:03 info: [crud-sale.js] reads method async of CrudProgrammer is used

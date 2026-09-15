@@ -28,5 +28,4 @@ class Marketing {
         );
     }
 }
-
 module.exports = new Marketing().marketing

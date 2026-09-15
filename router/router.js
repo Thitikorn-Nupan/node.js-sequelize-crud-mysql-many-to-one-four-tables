@@ -1,4 +1,6 @@
-const log = require('../log/logging').logger
+const path = require('../service/rest-api-service').path
+const {createLogger} = require('../log/logging-v2')
+
 const bodyParser = require('../service/rest-api-service').bodyParser
 
 /** variable for any router */
@@ -12,6 +14,9 @@ const crudMarketing = require('../crud/marketing/crud-marketing') , CrudMarketin
 const crudProgrammer = require('../crud/programmer/crud-programmer') , CrudProgrammerObj = new crudProgrammer()
 const crudSale = require('../crud/sale/crud-sale') , CrudSaleObj = new crudSale()
 const crudProject = require('../crud/crud-projects') , CrudProjectObj = new crudProject()
+
+const filename = path.basename(__filename);
+const log = createLogger(filename);
 
 /** set meddler ware */
 routerProject.use(bodyParser.json())

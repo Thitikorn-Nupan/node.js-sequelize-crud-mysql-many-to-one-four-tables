@@ -27,5 +27,4 @@ class Sale {
         );
     }
 }
-
 module.exports = new Sale().sale
